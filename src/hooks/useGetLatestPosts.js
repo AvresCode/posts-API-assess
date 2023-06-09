@@ -33,5 +33,9 @@ export const useGetLatestPosts = () => {
     setLoading(false);
   };
 
-  return { loading, error, latestPosts, fetchLatestPosts };
+  const addNewPost = (post) => {
+    setLatestPosts((prevPosts) => [post, ...prevPosts]);
+  };
+
+  return { loading, error, latestPosts, fetchLatestPosts, addNewPost };
 };

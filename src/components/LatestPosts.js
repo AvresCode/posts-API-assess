@@ -13,9 +13,9 @@ export const LatestPosts = () => {
   const imagePath = 'https://frontend-case-api.sbdev.nl/storage/';
 
   if (error) {
-    <p>Something went wrong ...</p>;
+    return <p>Something went wrong ...</p>;
   } else if (loading) {
-    <p>Loading ...</p>;
+    return <p>Loading ...</p>;
   }
 
   return (
