@@ -4,7 +4,7 @@ import { useState } from 'react';
 export const useGetLatestPosts = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [latestPosts, setLatestPosts] = useState(null);
+  const [latestPosts, setLatestPosts] = useState([]);
   const [addPost, setAddPost] = useState(0);
 
   const fetchLatestPosts = async () => {
@@ -33,9 +33,5 @@ export const useGetLatestPosts = () => {
     setLoading(false);
   };
 
-  const addNewPost = (post) => {
-    setLatestPosts((prevPosts) => [post, ...prevPosts]);
-  };
-
-  return { loading, error, latestPosts, fetchLatestPosts, addNewPost };
+  return { loading, error, latestPosts, fetchLatestPosts };
 };
