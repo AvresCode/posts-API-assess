@@ -1,3 +1,4 @@
+import './LatestPosts.css';
 export const LatestPosts = ({
   loading,
   error,
@@ -13,7 +14,7 @@ export const LatestPosts = ({
   }
 
   return (
-    <>
+    <div className="latestPosts-container">
       {latestPosts &&
         latestPosts.map((post) => (
           <div key={post.id}>
@@ -23,6 +24,6 @@ export const LatestPosts = ({
           </div>
         ))}
       <button onClick={() => fetchLatestPosts()}>load more</button>
-    </>
+    </div>
   );
 };

@@ -1,0 +1,22 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  flex-wrap: wrap;
+  margin: 2rem;
+  padding: 1rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .home-container {
+    flex-direction: row;
+    margin: 2rem 10rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .home-container {
+    margin: 2rem 5rem;
+  }
+}
