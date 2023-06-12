@@ -33,5 +33,5 @@ export const useGetLatestPosts = () => {
     setLoading(false);
   };
 
-  return { loading, error, latestPosts, fetchLatestPosts };
+  return { loading, error, fetchLatestPosts, latestPosts };
 };

@@ -1,15 +1,9 @@
-import { useEffect } from 'react';
-import { useGetLatestPosts } from '../hooks/useGetLatestPosts';
-
-export const LatestPosts = () => {
-  const { loading, error, latestPosts, fetchLatestPosts } = useGetLatestPosts();
-
-  useEffect(() => {
-    fetchLatestPosts();
-  }, []);
-
-  console.log(latestPosts);
-
+export const LatestPosts = ({
+  loading,
+  error,
+  latestPosts,
+  fetchLatestPosts,
+}) => {
   const imagePath = 'https://frontend-case-api.sbdev.nl/storage/';
 
   if (error) {

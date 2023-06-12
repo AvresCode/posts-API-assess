@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { CreatePostForm } from './CreatePostForm';
 
-export const CreatePostComponent = () => {
+export const useCreatePost = (fetchLatestPosts) => {
   const API_KEY = 'pj11daaQRz7zUIH56B9Z';
   const url = `https://frontend-case-api.sbdev.nl/api/posts`;
 
@@ -20,14 +19,11 @@ export const CreatePostComponent = () => {
       );
 
       console.log('response', response);
+
+      fetchLatestPosts();
     } catch (error) {
       console.log(error.message);
     }
   };
-
-  return (
-    <div>
-      <CreatePostForm createPost={createPost} />
-    </div>
-  );
+  return { createPost };
 };
