@@ -22,7 +22,7 @@ export const LatestPosts = ({
               <img
                 src={imagePath + post.img_url}
                 alt={post.title}
-                width={300}
+                className="post-image"
               />
               <h3>{post.title}</h3>
               <p>{post.content}</p>
