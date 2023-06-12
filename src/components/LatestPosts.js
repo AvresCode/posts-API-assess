@@ -15,15 +15,23 @@ export const LatestPosts = ({
 
   return (
     <div className="latestPosts-container">
-      {latestPosts &&
-        latestPosts.map((post) => (
-          <div key={post.id}>
-            <img src={imagePath + post.img_url} alt={post.title} width={300} />
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
-          </div>
-        ))}
-      <button onClick={() => fetchLatestPosts()}>load more</button>
+      <div className="posts-section">
+        {latestPosts &&
+          latestPosts.map((post) => (
+            <div key={post.id} className="onePost-container">
+              <img
+                src={imagePath + post.img_url}
+                alt={post.title}
+                width={300}
+              />
+              <h3>{post.title}</h3>
+              <p>{post.content}</p>
+            </div>
+          ))}
+      </div>
+      <button onClick={() => fetchLatestPosts()} className="load-button">
+        load more
+      </button>
     </div>
   );
 };

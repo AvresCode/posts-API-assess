@@ -1,11 +1,39 @@
 .latestPosts-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   width: 50%;
   height: 100vh;
-  padding: 0.2rem;
+  padding: 1rem 0.2rem;
 }
+.posts-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 0.3rem;
+}
+.onePost-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 280px;
+  height: 300px;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.3rem;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+img {
+  width: 280px;
+  height: 100px;
+  border-radius: 1rem;
+}
+
+.load-button {
+  width: 10rem;
+  padding: 0.5em 1em;
+  border-radius: 2rem;
+  margin: 3rem 2rem 5rem 2rem;
+}
+
 @media only screen and (min-width: 768px) {
   .latestPosts-container {
     width: 70%;

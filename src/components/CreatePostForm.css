@@ -24,6 +24,7 @@ input {
   width: 90%;
   padding: 0.5em 1em;
   border-radius: 2rem;
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
