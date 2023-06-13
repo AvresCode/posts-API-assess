@@ -26,7 +26,6 @@ export const useGetArchievedPosts = () => {
 
       setArchievedPosts(response.data.data);
       setTotalPages(response.data.last_page);
-      console.log(response.data);
     } catch (e) {
       setError(e.message);
       console.log(e.message);

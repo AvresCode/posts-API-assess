@@ -24,8 +24,7 @@ export const BlogPage = () => {
   const getPageNumbers = () => {
     const pageNumbers = [];
 
-    // we want 7 numbers appears on pagination
-    // current page + 6 other pages
+    // 7 numbers appears on pagination
 
     let startPage = currentPage - 3;
     let endPage = currentPage + 3;
@@ -62,12 +61,10 @@ export const BlogPage = () => {
         <div>
           {currentPage > 1 && (
             <button onClick={handlePrevPage} className="switch-page-button">
-              {' '}
               Prev
             </button>
           )}
         </div>
-        {/* <div> {currentPage}</div> */}
         <div className="pagination-buttons-container">
           {getPageNumbers().map((pageNumber) => (
             <button
@@ -84,7 +81,6 @@ export const BlogPage = () => {
         <div>
           {currentPage < totalPages && (
             <button onClick={handleNextPage} className="switch-page-button">
-              {' '}
               next
             </button>
           )}

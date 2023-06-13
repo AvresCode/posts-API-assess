@@ -25,7 +25,6 @@ export const useGetLatestPosts = () => {
 
       setLatestPosts(response.data.data);
       setAddPost(addPost + 4);
-      console.log(response.data.data.length);
     } catch (e) {
       setError(e.message);
       console.log(e.message);

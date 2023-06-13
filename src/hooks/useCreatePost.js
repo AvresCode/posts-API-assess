@@ -17,9 +17,7 @@ export const useCreatePost = (fetchLatestPosts) => {
           },
         }
       );
-
-      console.log('response', response);
-
+      console.log(response);
       fetchLatestPosts();
     } catch (error) {
       console.log(error.message);

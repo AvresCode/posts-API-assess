@@ -15,11 +15,13 @@ export const CreatePostForm = ({ createPost }) => {
   };
 
   const handleSubmit = async (e) => {
-    console.log('submitted');
     e.preventDefault();
 
-    console.log(title, content, category_id, image);
     createPost(title, content, category_id, image);
+    setTitle('');
+    setContent('');
+    setCategoryId('');
+    setImageURL('');
   };
 
   return (
@@ -43,12 +45,13 @@ export const CreatePostForm = ({ createPost }) => {
         />
 
         <label>Category:</label>
-        <input
-          type="text"
-          value={category_id}
-          onChange={(e) => setCategoryId(e.target.value)}
-        />
-
+        <select onChange={(e) => setCategoryId(e.target.value)}>
+          <option value="">select</option>
+          <option value="1">Tech</option>
+          <option value="2">Nieuws</option>
+          <option value="3">Sports</option>
+          <option value="4">Lokaal</option>
+        </select>
         <label>Header Image: </label>
         <input type="file" onChange={handleImageChange} />
         <button className="submit-button"> Submit</button>
