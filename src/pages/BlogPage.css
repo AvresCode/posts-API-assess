@@ -19,3 +19,34 @@
   height: 3rem;
   margin: 5rem;
 }
+
+.pagination-buttons-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.pagination-button {
+  background-color: rgb(247, 247, 234);
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.pagination-button:hover {
+  background-color: rgb(249, 249, 249);
+  transform: scale(1.1);
+}
+
+.pagination-button.active {
+  color: rgb(63, 74, 221);
+  background-color: #fdfdfc;
+}
+
+.switch-page-button {
+  background-color: rgb(247, 247, 234);
+  padding: 8px 12px;
+}
+.switch-page-button:hover {
+  background-color: rgb(249, 249, 249);
+}

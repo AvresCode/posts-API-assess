@@ -4,21 +4,47 @@ import { OnePost } from '../components/OnePost';
 import './BlogPage.css';
 
 export const BlogPage = () => {
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const { loading, error, archievedPosts, fetchLatestPosts, totalPages } =
     useGetArchievedPosts();
 
   useEffect(() => {
-    fetchLatestPosts(page);
-  }, [page]);
+    fetchLatestPosts(currentPage);
+  }, [currentPage]);
 
   console.log(archievedPosts);
 
   const handleNextPage = () => {
-    setPage(page + 1);
+    setCurrentPage(currentPage + 1);
   };
   const handlePrevPage = () => {
-    setPage(page - 1);
+    setCurrentPage(currentPage - 1);
+  };
+
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+
+    // we want 7 numbers appears on pagination
+    // current page + 6 other pages
+
+    let startPage = currentPage - 3;
+    let endPage = currentPage + 3;
+
+    if (startPage < 1) {
+      startPage = 1;
+      endPage = startPage + 6;
+    }
+
+    if (endPage > totalPages) {
+      endPage = totalPages;
+      startPage = endPage - 6;
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+
+    return pageNumbers;
   };
 
   if (error) {
@@ -33,11 +59,35 @@ export const BlogPage = () => {
         {archievedPosts && archievedPosts.map((post) => <OnePost {...post} />)}
       </div>
       <div className="pagination">
-        <div>{page > 1 && <button onClick={handlePrevPage}> Prev</button>}</div>
-        <div> {page}</div>
         <div>
-          {' '}
-          {page < totalPages && <button onClick={handleNextPage}> next</button>}
+          {currentPage > 1 && (
+            <button onClick={handlePrevPage} className="switch-page-button">
+              {' '}
+              Prev
+            </button>
+          )}
+        </div>
+        {/* <div> {currentPage}</div> */}
+        <div className="pagination-buttons-container">
+          {getPageNumbers().map((pageNumber) => (
+            <button
+              key={pageNumber}
+              onClick={() => setCurrentPage(pageNumber)}
+              className={`pagination-button ${
+                pageNumber === currentPage ? 'active' : ''
+              }`}
+            >
+              {pageNumber}
+            </button>
+          ))}
+        </div>
+        <div>
+          {currentPage < totalPages && (
+            <button onClick={handleNextPage} className="switch-page-button">
+              {' '}
+              next
+            </button>
+          )}
         </div>
       </div>
     </div>
