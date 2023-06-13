@@ -51,7 +51,6 @@ export const CreatePostForm = ({ createPost }) => {
 
         <label>Header Image: </label>
         <input type="file" onChange={handleImageChange} />
-
         <button className="submit-button"> Submit</button>
       </form>
     </div>
