@@ -5,8 +5,9 @@ export const useGetArchievedPosts = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [archievedPosts, setArchievedPosts] = useState(null);
+  const [totalPages, setTotalPages] = useState(null);
 
-  const fetchLatestPosts = async () => {
+  const fetchLatestPosts = async (currentPage) => {
     const URL = 'https://frontend-case-api.sbdev.nl/api/posts';
     const API_KEY = 'pj11daaQRz7zUIH56B9Z';
     setLoading(true);
@@ -15,7 +16,8 @@ export const useGetArchievedPosts = () => {
         params: {
           perPage: 8,
           sortBy: 'created_at',
-          sortDirection: 'desc',
+          sortDirection: 'asc',
+          page: currentPage,
         },
         headers: {
           token: `${API_KEY}`,
@@ -23,7 +25,8 @@ export const useGetArchievedPosts = () => {
       });
 
       setArchievedPosts(response.data.data);
-      console.log(response.data.data.length);
+      setTotalPages(response.data.last_page);
+      console.log(response.data);
     } catch (e) {
       setError(e.message);
       console.log(e.message);
@@ -31,5 +34,5 @@ export const useGetArchievedPosts = () => {
     setLoading(false);
   };
 
-  return { loading, error, archievedPosts, fetchLatestPosts };
+  return { loading, error, archievedPosts, fetchLatestPosts, totalPages };
 };

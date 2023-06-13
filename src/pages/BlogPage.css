@@ -11,3 +11,11 @@
   justify-content: space-around;
   gap: 0.3rem;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  height: 3rem;
+  margin: 5rem;
+}

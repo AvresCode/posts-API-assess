@@ -1,17 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useGetArchievedPosts } from '../hooks/useGetArchievedPosts';
 import { OnePost } from '../components/OnePost';
 import './BlogPage.css';
 
 export const BlogPage = () => {
-  const { loading, error, archievedPosts, fetchLatestPosts } =
+  const [page, setPage] = useState(1);
+  const { loading, error, archievedPosts, fetchLatestPosts, totalPages } =
     useGetArchievedPosts();
 
   useEffect(() => {
-    fetchLatestPosts();
-  }, []);
+    fetchLatestPosts(page);
+  }, [page]);
 
   console.log(archievedPosts);
+
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
+  const handlePrevPage = () => {
+    setPage(page - 1);
+  };
 
   if (error) {
     return <p>Something went wrong ...</p>;
@@ -24,7 +32,14 @@ export const BlogPage = () => {
       <div className="archieved-posts">
         {archievedPosts && archievedPosts.map((post) => <OnePost {...post} />)}
       </div>
-      <div> Pagination</div>
+      <div className="pagination">
+        <div>{page > 1 && <button onClick={handlePrevPage}> Prev</button>}</div>
+        <div> {page}</div>
+        <div>
+          {' '}
+          {page < totalPages && <button onClick={handleNextPage}> next</button>}
+        </div>
+      </div>
     </div>
   );
 };
